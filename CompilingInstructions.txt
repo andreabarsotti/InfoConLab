@@ -4,4 +4,5 @@ In order to execute a cpp file from the terminal, do these steps:
 - Open the cmd (Wind+R -> cmd)
 - Go to the right folder (cd "path-to-folder")
 - write in cmd g++ sourcefile_name.c -o outputfile.exe (this compiles the cpp file creating an exe version)
-- write outputfile.exe (this opens the outputfile.exe, thus executing the code)
+- write outputfile.exe 
+(this opens the outputfile.exe, thus executing the code: if it doesn't work, write .\outputfile.exe)
