@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    vector<int> vec_numbers; //vectors of integers
+    vector<int> vec_numbers(5); //vector of 5 integers: the (n) is not necessary
     vec_numbers.assign(3, 0); //assigns 3 elements with value 0 to the vector
     vec_numbers.push_back(5); //adds 5 to the end of the vector
     cout << "The vector contains: ";
