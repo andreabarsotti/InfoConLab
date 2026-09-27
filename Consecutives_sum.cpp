@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib> // for rand() function
+#include <ctime> // for seeding rand() with time
 /*
 This creates a random array of 10 elements between -50 and 49, 
 then finds the maximum sum of n consecutive elements, varying n */
@@ -22,6 +23,7 @@ int sum(const vector<int>& v, int number, int start) {
 }
 
 int main(){
+    srand(time(0)); // seed the random number generator
     vector<int> a(10);
     for (int i = 0; i < a.size(); i++){
         a[i] = rand() % 100 - 50; // random number between -50 and 49
@@ -37,6 +39,7 @@ int main(){
     int n_max;
     int current_sum;
     int starting_index;
+    /*// Version 1
     for (int i = 0; i < a.size(); i++) {
         for (n = 0; n <= a.size(); n++) {
             current_sum = sum(a, n, i);
@@ -49,6 +52,31 @@ int main(){
                 max = current_sum;
                 n_max = n;
                 starting_index = i;
+            }
+        }
+    }
+    */
+    //Version 2
+    for (int i = 0; i < a.size(); i++) {
+        for (n = i; n < a.size(); n++) {
+            if (i == 0 && n == 0) {
+                max = a[0];
+                current_sum = a[0];
+                n_max = 1;
+                starting_index = 0;
+            }
+            else {
+                if (n==i) {
+                    current_sum = a[i];
+                }
+                else {
+                    current_sum += a[n];
+                }
+                if (current_sum > max) {
+                    max = current_sum;
+                    n_max = n - i + 1;
+                    starting_index = i;
+                }
             }
         }
     }
